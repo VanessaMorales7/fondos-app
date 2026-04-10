@@ -1,0 +1,75 @@
+.historial-item {
+  display: grid;
+  grid-template-columns: 36px 1fr 110px 130px 100px;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-bottom: 0.5px solid #e0e0e0;
+
+  &__icono {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+
+    &--suscripcion {
+      background: #eaf3de;
+      color: #27500a;
+    }
+
+    &--cancelacion {
+      background: #fcebeb;
+      color: #a32d2d;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  &__nombre {
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  &__meta {
+    font-size: 11px;
+    color: #888;
+  }
+
+  &__monto {
+    font-size: 13px;
+    font-weight: 500;
+
+    &--negativo { color: #a32d2d; }
+    &--positivo { color: #3b6d11; }
+  }
+
+  &__fecha {
+    font-size: 12px;
+    color: #888;
+  }
+
+  &__badge {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 10px;
+    text-transform: capitalize;
+
+    &--suscripcion {
+      background: #eaf3de;
+      color: #27500a;
+    }
+
+    &--cancelacion {
+      background: #fcebeb;
+      color: #a32d2d;
+    }
+  }
+}

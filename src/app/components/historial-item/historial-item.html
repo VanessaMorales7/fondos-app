@@ -1,0 +1,26 @@
+<div class="historial-item">
+  <div class="historial-item__icono"
+       [class.historial-item__icono--suscripcion]="esSuscripcion"
+       [class.historial-item__icono--cancelacion]="!esSuscripcion">
+    {{ esSuscripcion ? '+' : '−' }}
+  </div>
+
+  <div class="historial-item__info">
+    <span class="historial-item__nombre">{{ transaccion.nombreFondo }}</span>
+    <span class="historial-item__meta">{{ transaccion.notificacion | uppercase }}</span>
+  </div>
+
+  <span class="historial-item__monto"
+        [class.historial-item__monto--negativo]="esSuscripcion"
+        [class.historial-item__monto--positivo]="!esSuscripcion">
+    {{ esSuscripcion ? '-' : '+' }}{{ transaccion.monto | copCurrency }}
+  </span>
+
+  <span class="historial-item__fecha">{{ fechaFormateada }}</span>
+
+  <span class="historial-item__badge"
+        [class.historial-item__badge--suscripcion]="esSuscripcion"
+        [class.historial-item__badge--cancelacion]="!esSuscripcion">
+    {{ transaccion.tipo }}
+  </span>
+</div>

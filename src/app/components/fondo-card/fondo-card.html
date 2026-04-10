@@ -1,0 +1,33 @@
+<div class="fondo-card">
+  <div class="fondo-card__info">
+    <span class="fondo-card__nombre">{{ fondo.nombre }}</span>
+    <span class="fondo-card__categoria fondo-card__categoria--{{ fondo.categoria.toLowerCase() }}">
+      {{ fondo.categoria }}
+    </span>
+  </div>
+
+  <span class="fondo-card__monto">{{ fondo.montoMinimo | copCurrency }}</span>
+
+  <div class="fondo-card__estado">
+    <span class="fondo-card__dot" [class.fondo-card__dot--activo]="estasSuscrito"></span>
+    <span class="fondo-card__estado-texto" [class.fondo-card__estado-texto--suscrito]="estasSuscrito">
+      {{ estasSuscrito ? 'Suscrito' : 'Disponible' }}
+    </span>
+  </div>
+
+  <div class="fondo-card__accion">
+    @if (estasSuscrito) {
+      <button class="fondo-card__btn fondo-card__btn--cancelar" (click)="onCancelar()">
+        Cancelar
+      </button>
+    } @else if (tieneSaldo) {
+      <button class="fondo-card__btn fondo-card__btn--suscribir" (click)="onSuscribirse()">
+        Suscribirse
+      </button>
+    } @else {
+      <button class="fondo-card__btn fondo-card__btn--disabled" disabled>
+        Sin saldo
+      </button>
+    }
+  </div>
+</div>

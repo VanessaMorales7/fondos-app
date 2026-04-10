@@ -1,0 +1,59 @@
+@if (visible && fondo) {
+  <div class="suscribir-modal__overlay" (click)="onCerrar()">
+    <div class="suscribir-modal" (click)="$event.stopPropagation()">
+
+      <div class="suscribir-modal__header">
+        <span class="suscribir-modal__titulo">Suscribirse a {{ fondo.nombre }}</span>
+        <span class="suscribir-modal__subtitulo">
+          {{ fondo.categoria }} · Monto mínimo: {{ fondo.montoMinimo | copCurrency }}
+        </span>
+      </div>
+
+      @if (errorMensaje) {
+        <div class="suscribir-modal__error">
+          {{ errorMensaje }}
+        </div>
+      }
+
+      <div class="suscribir-modal__campo">
+        <label class="suscribir-modal__label">Monto a suscribir</label>
+        <input
+          class="suscribir-modal__input"
+          type="text"
+          [value]="fondo.montoMinimo | copCurrency"
+          disabled />
+      </div>
+
+      <div class="suscribir-modal__campo">
+        <label class="suscribir-modal__label">Método de notificación</label>
+        <div class="suscribir-modal__notificaciones">
+          <button
+            class="suscribir-modal__notif-btn"
+            [class.suscribir-modal__notif-btn--activo]="notificacion === 'email'"
+            (click)="seleccionarNotificacion('email')">
+            Email
+          </button>
+          <button
+            class="suscribir-modal__notif-btn"
+            [class.suscribir-modal__notif-btn--activo]="notificacion === 'sms'"
+            (click)="seleccionarNotificacion('sms')">
+            SMS
+          </button>
+        </div>
+      </div>
+
+      <div class="suscribir-modal__acciones">
+        <button class="suscribir-modal__btn suscribir-modal__btn--cancelar" (click)="onCerrar()">
+          Cancelar
+        </button>
+        <button
+          class="suscribir-modal__btn suscribir-modal__btn--confirmar"
+          [disabled]="saldoInsuficiente"
+          (click)="onConfirmar()">
+          Confirmar suscripción
+        </button>
+      </div>
+
+    </div>
+  </div>
+}

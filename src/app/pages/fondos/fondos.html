@@ -1,0 +1,51 @@
+<div class="fondos-page">
+
+  <div class="fondos-page__metricas">
+    <app-metric-card
+      titulo="Saldo disponible"
+      [valor]="(usuario?.saldo ?? 0) | copCurrency">
+    </app-metric-card>
+
+    <app-metric-card
+      titulo="Invertido en fondos"
+      [valor]="montoInvertido | copCurrency"
+      [subtitulo]="fondosActivos + ' fondos activos'">
+    </app-metric-card>
+
+    <app-metric-card
+      titulo="Notificaciones vía"
+      [valor]="(usuario?.notificacion ?? '') | uppercase">
+    </app-metric-card>
+  </div>
+
+  <div class="fondos-page__tabla">
+    <div class="fondos-page__tabla-header">
+      <span>Nombre del fondo</span>
+      <span>Monto mínimo</span>
+      <span>Categoría</span>
+      <span>Estado</span>
+      <span>Acción</span>
+    </div>
+
+    @for (fondo of fondos; track fondo.id) {
+      <app-fondo-card
+        [fondo]="fondo"
+        [saldoDisponible]="usuario?.saldo ?? 0"
+        [transaccionActiva]="getTransaccionActiva(fondo)"
+        (suscribirse)="abrirModal($event)"
+        (cancelar)="onCancelar($event)">
+      </app-fondo-card>
+    }
+  </div>
+
+  @if (fondoSeleccionado) {
+    <app-suscribir-modal
+      [fondo]="fondoSeleccionado"
+      [saldoDisponible]="usuario?.saldo ?? 0"
+      [visible]="modalVisible"
+      (confirmar)="onSuscribirse($event)"
+      (cerrar)="cerrarModal()">
+    </app-suscribir-modal>
+  }
+
+</div>

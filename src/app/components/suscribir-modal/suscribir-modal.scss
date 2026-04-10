@@ -1,0 +1,119 @@
+.suscribir-modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__titulo {
+    font-size: 15px;
+    font-weight: 500;
+    color: #1a1a1a;
+  }
+
+  &__subtitulo {
+    font-size: 12px;
+    color: #888;
+  }
+
+  &__error {
+    background: #fcebeb;
+    border: 0.5px solid #f09595;
+    color: #a32d2d;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  &__campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__label {
+    font-size: 12px;
+    color: #888;
+  }
+
+  &__input {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 0.5px solid #ccc;
+    font-size: 13px;
+    background: #f5f5f5;
+    color: #888;
+  }
+
+  &__notificaciones {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__notif-btn {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+    border: 0.5px solid #ccc;
+    font-size: 13px;
+    cursor: pointer;
+    background: #fff;
+    color: #888;
+
+    &--activo {
+      border-color: #1b3a6b;
+      color: #1b3a6b;
+      background: #e6f1fb;
+    }
+  }
+
+  &__acciones {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  &__btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+
+    &--cancelar {
+      background: #f5f5f5;
+      color: #666;
+      border: 0.5px solid #ccc;
+    }
+
+    &--confirmar {
+      background: #1b3a6b;
+      color: #fff;
+
+      &:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+}

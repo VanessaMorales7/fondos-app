@@ -1,0 +1,28 @@
+<div class="historial-page">
+
+  <div class="historial-page__header">
+    <span class="historial-page__titulo">Historial de transacciones</span>
+    <span class="historial-page__contador">{{ transacciones.length }} movimientos</span>
+  </div>
+
+  <div class="historial-page__lista">
+    <div class="historial-page__lista-header">
+      <span></span>
+      <span>Fondo</span>
+      <span>Monto</span>
+      <span>Fecha</span>
+      <span>Tipo</span>
+    </div>
+
+    @if (transacciones.length === 0) {
+      <div class="historial-page__vacio">
+        No hay transacciones aún.
+      </div>
+    } @else {
+      @for (transaccion of transacciones; track transaccion.id) {
+        <app-historial-item [transaccion]="transaccion" />
+      }
+    }
+  </div>
+
+</div>
